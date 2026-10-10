@@ -1,8 +1,8 @@
-# TAMEn: Tactile-Aware Manipulation Engine for Closed-Loop Data Collection in Contact-Rich Tasks
+# BiTacMan: Tactile-aware data collection system for contact-rich bimanual manipulation
 
 <img src="https://raw.githubusercontent.com/OpenDriveLab/opendrivelab.github.io/master/TAMEn/landing/teaser.jpg" alt="TAMEn: dual-mode acquisition, data recipe, and data flywheel (teaser)" width="100%" />
 
-🚀 [Website](https://opendrivelab.com/TAMEn) | 📄 [Paper](https://arxiv.org/abs/2604.07335) | 🛠️ [Hardware (Coming Soon)](https://github.com/OpenDriveLab/TAMEn)
+🚀 [Website](https://opendrivelab.com/TAMEn) | 📄 [Paper](https://arxiv.org/abs/2604.07335) | 🤗 [Dataset](https://huggingface.co/datasets/OpenDriveLab-org/BiTacMan) | 🛠️ [Hardware (Coming Soon)](https://github.com/OpenDriveLab/TAMEn)
 
 ✒️ **Longyan Wu**<sup>1,2,3</sup>, **Jieji Ren**<sup>4</sup>, **Chenghang Jiang**<sup>5</sup>, **Junxi Zhou**<sup>5</sup>, **Shijia Peng**<sup>3</sup>, **Ran Huang**<sup>1</sup>, **Guoying Gu**<sup>4</sup>, **Li Chen**<sup>3</sup>, **Hongyang Li**<sup>2,3</sup>
 
@@ -12,12 +12,12 @@
 - **(i)** A visuo-tactile data **engine** for bimanual contact-rich manipulation, which integrates hardware, acquisition strategy, and policy learning into a closed-loop framework.
 - **(ii)** A human-machine **interface** that supports a dual-mode pipeline with sub-millimeter MoCap and VR-based in-the-wild acquisition, and can rapidly adapt to heterogeneous grippers.
 - **(iii)** A data collection **recipe** that incorporates real-time validation during collection and organizes heterogeneous multi-modal data into a pyramid-structured regime for staged learning.
-- **(iv)** A closed-loop data **flywheel** that leverages AR-based teleoperation with tactile feedback (tAmeR) to refine policies using corrective data from realistic failures.
+- **(iv)** A closed-loop data **flywheel** that leverages AR-based teleoperation with tactile feedback (BiTacAR) to refine policies using corrective data from realistic failures.
 
 ## 🎯 Table of Contents
 - [🦾 Highlight](#-highlight)
 - [✅ TODO List](#-todo-list)
-- [🎮 tAmeR Teleopration](#-tamer-teleopration)
+- [🎮 BiTacAR Teleopration](#-BiTacAR-teleopration)
 - [📝 Citation](#-citation)
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📄 License](#-license)
@@ -25,24 +25,24 @@
 ## ✅ TODO List
 
 > Note: TAMEn follows a staged release plan for hardware, data collection, and policy learning.
-- [x] Release tAmeR app for Pico 4 Ultra / Pico 4 and the corresponding teleoperation programs
+- [x] Release BiTacAR app for Pico 4 Ultra / Pico 4 and the corresponding teleoperation programs
 - [ ] Release CAD models for multimodal data collection devices (compatible with GelSight, Xense, DW-Tac, PaXini, and our own sensor)
 - [ ] Release data collection workflow and dataset
 - [ ] Release training scripts, model configs, and inference pipeline
 
-## 🎮 tAmeR Teleopration
+## 🎮 BiTacAR Teleopration
 
-### tAmeR Quick Start
+### BiTacAR Quick Start
 
-**tAmeR** is an AR app for robot teleoperation, providing operators with real-time visual and tactile feedback.
+**BiTacAR** is an AR app for robot teleoperation, providing operators with real-time visual and tactile feedback.
 
-- `tAmeR` runs on **PICO 4 / 4 Ultra** and sends controller poses + button states to a PC via TCP.
+- `BiTacAR` runs on **PICO 4 / 4 Ultra** and sends controller poses + button states to a PC via TCP.
 - It can be directly applied to teleoperation for arbitrary robot arms. This repository now includes the teleoperation workflow for **JAKA K1**, and support for **AgileX Piper** will be open-sourced in the future.
 - A ROS2 WebSocket-JPEG backend can be used to stream multi-camera visual/tactile images.
 
 #### 1) Prerequisites
 - Headset side:
-  - `tAmeR.apk` installed on PICO
+  - `BiTacAR.apk` installed on PICO
   - PICO and PC are in the same LAN
   - Controllers are paired and tracked
 - PC side:
@@ -68,7 +68,7 @@ python3 -c "import rclpy; from sensor_msgs.msg import Image; print('ros2 ok')"
 # python3 -m venv tamen && source tamen/bin/activate && pip install --upgrade pip && pip install numpy opencv-python aiohttp
 
 source /opt/ros/<your_ros_distro>/setup.bash
-python3 tAmeR/tAmeR_ws.py \
+python3 BiTacAR/BiTacAR_ws.py \
   --host 0.0.0.0 \
   --port 8765 \
   --left-topic /left_camera/color/image_raw \
@@ -98,7 +98,7 @@ ros2 launch orbbec_camera tac_multi_usbcamera_xy.launch.py
 **Connect the headset**
 
 ```text
-Launch tAmeR.apk on PICO.
+Launch BiTacAR.apk on PICO.
 
 [Input]
 PC IP : LAN IP of your PC
