@@ -24,7 +24,7 @@
 
 ## ✅ TODO List
 
-> Note: TAMEn follows a staged release plan for hardware, data collection, and policy learning.
+> Note: BiTacMan follows a staged release plan for hardware, data collection, and policy learning.
 - [x] Release BiTacAR app for Pico 4 Ultra / Pico 4 and the corresponding teleoperation programs
 - [ ] Release CAD models for multimodal data collection devices (compatible with GelSight, Xense, DW-Tac, PaXini, and our own sensor)
 - [ ] Release data collection workflow and dataset
